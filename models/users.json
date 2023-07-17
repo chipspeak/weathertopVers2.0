@@ -1,0 +1,12 @@
+{
+  "file": "./models/users.json",
+  "users": [
+    {
+      "firstname": "Patrick",
+      "lastname": "O'Connor",
+      "email": "pwoconnor@hotmail.co.uk",
+      "password": "0",
+      "_id": "47a3b657-dce7-47d7-955c-a1e43774ecde"
+    }
+  ]
+}

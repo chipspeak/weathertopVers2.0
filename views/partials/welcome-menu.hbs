@@ -1,0 +1,19 @@
+{{>brand}}
+<br>
+<nav class="navbar is-transparent is-inverted">
+  <div class="navbar-start is-active">
+    <a id="start" class="button is-info mx-2 is-size-5" href="/"> Weathertop<i
+        class="fa-solid fa-satellite-dish pl-2"></i></a>
+  </div>
+  <div class="navbar-menu is-active">
+    <div class="navbar-end is-active">
+      <a id="signup" class="button is-info mx-2 is-size-5" href="/signup">Signup<i
+          class="fa-solid fa-user-plus pl-2"></i></a>
+      <a id="login" class="button is-info mx-2 is-size-5" href="/login">Login<i class="fa-solid fa-users pl-2"></i></a>
+    </div>
+  </div>
+</nav>
+<script>
+  document.getElementById("{{active}}").classList.add("is-info");
+</script>
+<br>

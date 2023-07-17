@@ -1,0 +1,20 @@
+{{>brand}}
+<br>
+<nav class="navbar is-transparent is-inverted" role="navigation" aria-label="main navigation">
+  <div class="navbar-menu is-active">
+    <div class="navbar-end is-active">
+      <a id="dashboard" class="button is-info mx-2 is-size-5" href="/dashboard">Dashboard<i
+          class="fa-solid fa-house-chimney-user pl-2"></i></a>
+      <a id="profile" class="button is-info mx-2 is-size-5" href="/profile">Profile<i
+          class="fa-solid fa-address-card pl-2"></i></a>
+      <a id="about" class="button is-info mx-2 is-size-5" href="/about">About<i
+          class="fa-solid fa-circle-info pl-2"></i></a>
+      <a id="logout" class="button is-info mx-2 is-size-5" href="/logout">Logout<i
+          class="fa-solid fa-right-from-bracket pl-2"></i></a>
+    </div>
+  </div>
+</nav>
+<script>
+  document.getElementById("{{active}}").classList.add("is-white");
+</script>
+<br>

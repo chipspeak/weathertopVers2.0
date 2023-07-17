@@ -1,0 +1,125 @@
+
+<table class="table is-bordered">
+  <div class="columns">
+    <div class="column is-2 is-offset-1">
+      <div class="card has-background-dark">
+        <header class="card-header">
+          <p class="card-header-title has-text-white has-text-centered pb-4 is-300px">
+            Station
+          </p>
+        </header>
+        <div class="card-image">
+          <i class="fa-regular has-text-white fa-compass fa-beat fa-7x ml-3 pl-5 pb-4"
+             style="--fa-animation-duration: 6s;"></i>
+        </div>
+        <p class="card-text has-text-white has-text-centered pt-5">
+          {{station.location}}
+        </p>
+        <footer class="card-footer is-flex">
+          <p class="card-footer-item has-text-white mb-0">{{station.longitude}} Longitude</p>
+          <p class="card-footer-item has-text-white mb-0">{{station.latitude}} Latitude</p>
+        </footer>
+      </div>
+    </div>
+    <div class="column is-2">
+      <div class="card has-background-dark">
+        <header class="card-header">
+          <p class="card-header-title has-text-white has-text-centered pb-5">
+            Weather
+          </p>
+        </header>
+        <div class="card-image">
+          <figure class="image is-medium has-text-centered">
+            <i class="{{latestReading.weatherIcon}} fas fa-regular has-text-white fa-beat fa-6x"
+               style="--fa-animation-duration: 7s;"></i>
+          </figure>
+        </div>
+        <p class="card-text has-text-white has-text-centered mt-6">
+          Latest conditions
+        </p>
+        <footer class="card-footer has-text-white has-text-centered">
+          <p class="card-footer-item">
+            {{latestReading.weatherCondition}}
+          </p>
+        </footer>
+      </div>
+    </div>
+    <div class="column is-2">
+      <div class="card has-background-dark">
+        <header class="card-header">
+          <p class="card-header-title has-text-white has-text-centered mb-5">
+            Temperature
+          </p>
+        </header>
+        <div class="card-image">
+          <figure class="image is-medium has-text-centered">
+            <i class="{{latestReading.tempIcon}} fa-regular has-text-white fa-beat fa-7x pl-1"
+               style="--fa-animation-duration: 8s;"></i>
+          </figure>
+        </div>
+        <p class="card-text has-text-white has-text-centered mt-6">
+          {{latestReading.temp}}° Celsius
+          <br>
+          {{latestReading.fahrenheit}}° Fahrenheit
+          <br>
+        </p>
+        <footer class="card-footer has-text-white">
+          <p class="card-footer-item mb-0">Min: {{minTemp}}°</p>
+          <p class="card-footer-item mb-0">Max: {{maxTemp}}°</p>
+<!--           <i class="card-footer-item mt-2 ${_station.tempTrend()}" style="--fa-animation-duration: 5s;"></i> -->
+        </footer>
+      </div>
+    </div>
+    <div class="column is-2">
+      <div class="card has-background-dark">
+        <header class="card-header">
+          <p class="card-header-title has-text-white has-text-centered pb-5">
+            Wind
+          </p>
+        </header>
+        <div class="card-image">
+          <figure class="image has-text-centered">
+            <i class="fa-solid fa-wind has-text-white fa-beat fa-7x pl-1" style="--fa-animation-duration: 9s;"></i>
+          </figure>
+        </div>
+        <p class="card-text has-text-white has-text-centered pt-6">
+          {{latestReading.beaufortScale}} bft
+          <br>
+          {{latestReading.label}}
+          <br>
+          Feels like {{latestReading.windChill}}° Celsius
+          <br>
+          {{latestReading.windDirectionCalculation}}
+        </p>
+        <footer class="card-footer has-text-white">
+          <p class="card-footer-item mb-0">Min: {{minWind}} km/h</p>
+          <p class="card-footer-item mb-0">Max: {{maxWind}} km/h</p>
+<!--           <i class="card-footer-item mt-5 mr-5 ${_station.windTrend()}" style="--fa-animation-duration: 5s;"></i> -->
+        </footer>
+      </div>
+    </div>
+    <div class="column is-2">
+      <div class="card has-background-dark">
+        <header class="card-header">
+          <p class="card-header-title has-text-white has-text-centered pb-4">
+            Pressure
+          </p>
+        </header>
+        <div class="card-image">
+          <figure class="image has-text-centered">
+            <i class="fa-brands fa-cloudscale fa-light has-text-white fa-beat fa-8x "
+               style="--fa-animation-duration: 10s;"></i>
+          </figure>
+        </div>
+        <p class="card-text has-text-white has-text-centered mt-3 pt-5">
+          {{latestReading.pressure}} hPa
+        </p>
+        <footer class="card-footer has-text-white">
+          <p class="card-footer-item mb-0">Min: {{minPressure}} hPa</p>
+          <p class="card-footer-item mb-0">Max: {{maxPressure}} hPa</p>
+<!--           <i class="card-footer-item mt-5 ${_station.pressureTrend()}" style="--fa-animation-duration: 5s;"></i> -->
+        </footer>
+      </div>
+    </div>
+  </div>
+</table>
