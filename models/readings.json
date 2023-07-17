@@ -1,0 +1,23 @@
+{
+  "file": "./models/readings.json",
+  "readings": [
+    {
+      "code": 200,
+      "temp": 8,
+      "windSpeed": 6,
+      "windDirection": 59,
+      "pressure": 1000,
+      "date": "2023-07-17T16:11",
+      "fahrenheit": 46.4,
+      "weatherCondition": "Partial Clouds",
+      "weatherIcon": "fa-cloud-sun",
+      "tempIcon": "fa-solid fa-temperature-empty",
+      "beaufortScale": 2,
+      "label": "Light Breeze",
+      "windChill": 7.2,
+      "windDirectionCalculation": "East North-East",
+      "_id": "821d6a0f-0a64-4126-adbe-66167b00e34a",
+      "stationid": "0b4fa71f-fbfa-4ece-80a0-579f24d1dfa7"
+    }
+  ]
+}

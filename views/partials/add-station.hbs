@@ -1,0 +1,29 @@
+<form action="/dashboard/addStation" method="POST">
+  <div class="field">
+    <button class="button is-size-5 is-light my-5">New Station<i class="fa-solid fa-satellite-dish pl-2"></i></button>
+    <div class="control is-medium has-icons-left">
+      <div class="pb-4">
+        <input class="input" placeholder="Station Name" type="text" name="location">
+        <span class="icon is-small is-left">
+            <i class="fas fa-satellite"></i>
+        </span>
+      </div>
+      <div class="control pb-4 has-icons-left">
+        <input class="input" placeholder="Longitude" type="text" name="longitude">
+        <span class="icon is-small is-left">
+            <i class="fas fa-angles-up"></i>
+        </span>
+      </div>
+      <div class="control pb-4 has-icons-left">
+        <input class="input" placeholder="Latitude" type="text" name="latitude">
+        <span class="icon is-small is-left">
+            <i class="fas fa-angles-down"></i>
+        </span>
+      </div>
+    </div>
+  </div>
+  <div class="field py-4">
+    <button class="button is-info is-size-5 is-outlined">Add Station<i class="fa-solid fa-square-plus pl-2"></i>
+    </button>
+  </div>
+</form>

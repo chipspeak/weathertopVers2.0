@@ -1,0 +1,50 @@
+{{> menu active="profile"}}
+
+<section class="content box">
+  <div class="columns">
+    <div class="column is-half">
+      <figure class="image has-background-white">
+        <img alt="profile page weather icon image" title="profile page weather icon image" src="/public/images/icons.png">
+      </figure>
+    </div>
+    <div class="column is-half">
+      <form action="/accounts/edit" method="POST">
+        <h3 class="subtitle">Edit Personal Details</h3>
+        <div class="field is-horizontal field-body">
+          <div class="field">
+            <label class="label">First Name</label>
+            <p class="control has-icons-left">
+              <input class="input" type="text" placeholder="First name" name="firstname">
+              <span class="icon is-small is-left">
+                  <i class="fa-solid fa-file-signature"></i>
+              </span>
+            </p>
+          </div>
+          <div class="field">
+            <label class="label">Last Name</label>
+            <p class="control has-icons-left">
+              <input class="input" type="text" placeholder="Last name" name="lastname">
+              <span class="icon is-small is-left">
+                  <i class="fa-solid fa-file-signature"></i>
+              </span>
+            </p>
+          </div>
+        </div>
+        <div class="field">
+          <label class="label">Password</label>
+          <p class="control has-icons-left">
+            <input class="input" type="password" name="password">
+            <span class="icon is-small is-left">
+                <i class="fa-solid fa-unlock-keyhole"></i>
+            </span>
+          </p>
+        </div>
+        <br>
+        <button class="button is-link is-info is-outlined">Update profile<i
+            class="fa-solid fa-user-check pl-2"></i></button>
+        <a href="/accounts/deleteProfile" class="button is-danger is-outlined ml-2"> Delete profile<i
+            class="fa-solid fa-user-xmark pl-2"></i></a>
+      </form>
+    </div>
+  </div>
+</section>
