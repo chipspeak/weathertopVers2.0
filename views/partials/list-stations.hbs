@@ -3,11 +3,12 @@
   <div class="title">
     {{location}}
   </div>
-  <a href="/station/{{_id}}" class="button">
-    {{>icons/open}}
+  {{>list-latest-reading}}
+  <a href="/station/{{_id}}" class="button is-info">
+    <i class="fa-solid fa-folder-open"></i>
   </a>
-  <a href="/dashboard/deletestation/{{_id}}" class="button">
-    {{>icons/delete}}
+  <a href="/dashboard/deletestation/{{_id}}" class="button is-danger">
+    <i class="fa-solid fa-trash"></i>
   </a>
 </div>
 {{/each}}

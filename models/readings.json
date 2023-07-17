@@ -3,20 +3,20 @@
   "readings": [
     {
       "code": 200,
-      "temp": 8,
+      "temp": 0.2,
       "windSpeed": 6,
       "windDirection": 59,
       "pressure": 1000,
-      "date": "2023-07-17T16:11",
-      "fahrenheit": 46.4,
+      "date": "2023-07-17T17:21",
+      "fahrenheit": 32.36,
       "weatherCondition": "Partial Clouds",
       "weatherIcon": "fa-cloud-sun",
       "tempIcon": "fa-solid fa-temperature-empty",
       "beaufortScale": 2,
       "label": "Light Breeze",
-      "windChill": 7.2,
+      "windChill": -1.8,
       "windDirectionCalculation": "East North-East",
-      "_id": "821d6a0f-0a64-4126-adbe-66167b00e34a",
+      "_id": "527b7d3e-4425-4cb6-aab3-fc0b51f13c1b",
       "stationid": "0b4fa71f-fbfa-4ece-80a0-579f24d1dfa7"
     }
   ]

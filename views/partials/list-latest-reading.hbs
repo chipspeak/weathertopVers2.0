@@ -66,7 +66,7 @@
         <footer class="card-footer has-text-white">
           <p class="card-footer-item mb-0">Min: {{minTemp}}°</p>
           <p class="card-footer-item mb-0">Max: {{maxTemp}}°</p>
-<!--           <i class="card-footer-item mt-2 ${_station.tempTrend()}" style="--fa-animation-duration: 5s;"></i> -->
+          <i class="card-footer-item mt-2 {{tempTrendText}}" style="--fa-animation-duration: 5s;"></i>
         </footer>
       </div>
     </div>
@@ -94,7 +94,7 @@
         <footer class="card-footer has-text-white">
           <p class="card-footer-item mb-0">Min: {{minWind}} km/h</p>
           <p class="card-footer-item mb-0">Max: {{maxWind}} km/h</p>
-<!--           <i class="card-footer-item mt-5 mr-5 ${_station.windTrend()}" style="--fa-animation-duration: 5s;"></i> -->
+          <i class="card-footer-item mt-5 mr-5 {{windTrendText}}" style="--fa-animation-duration: 5s;"></i>
         </footer>
       </div>
     </div>
@@ -117,7 +117,7 @@
         <footer class="card-footer has-text-white">
           <p class="card-footer-item mb-0">Min: {{minPressure}} hPa</p>
           <p class="card-footer-item mb-0">Max: {{maxPressure}} hPa</p>
-<!--           <i class="card-footer-item mt-5 ${_station.pressureTrend()}" style="--fa-animation-duration: 5s;"></i> -->
+          <i class="card-footer-item mt-5 {{pressureTrendText}}" style="--fa-animation-duration: 5s;"></i>
         </footer>
       </div>
     </div>

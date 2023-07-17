@@ -1,5 +1,6 @@
 import { stationStore } from "../models/station-store.js";
 import { accountsController } from "./accounts-controller.js";
+import {stationAnalytics} from "../utils/station-analytics.js";
 
 export const dashboardController = {
   async index(request, response) {
@@ -7,6 +8,7 @@ export const dashboardController = {
     const viewData = {
       title: "Station Dashboard",
       stations: await stationStore.getStationsByUserId(loggedInUser._id),
+      
     };
     console.log("dashboard rendering");
     response.render("dashboard-view", viewData);
