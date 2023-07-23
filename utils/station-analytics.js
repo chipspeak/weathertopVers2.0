@@ -1,12 +1,4 @@
 export const stationAnalytics = {
-  getLatestReading(station) {
-    let latestReading = null;
-    let latestReadingPosition = station.readings.length - 1;
-    if (station.readings.length > 0) {
-      latestReading = station.readings[latestReadingPosition];
-    }
-    return latestReading;
-  },
 
   minTemp(station) {
     let minTemp = null;

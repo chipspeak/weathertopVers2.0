@@ -7,7 +7,7 @@
       "windSpeed": 6,
       "windDirection": 59,
       "pressure": 1000,
-      "date": "2023-07-17T17:21",
+      "date": "2023-07-23T23:05",
       "fahrenheit": 32.36,
       "weatherCondition": "Partial Clouds",
       "weatherIcon": "fa-cloud-sun",
@@ -16,8 +16,44 @@
       "label": "Light Breeze",
       "windChill": -1.8,
       "windDirectionCalculation": "East North-East",
-      "_id": "527b7d3e-4425-4cb6-aab3-fc0b51f13c1b",
-      "stationid": "0b4fa71f-fbfa-4ece-80a0-579f24d1dfa7"
+      "_id": "4e60c843-2acd-4b9b-9734-85febb3bdc59",
+      "stationid": "35cf7765-a196-40fb-adac-a0110fb1d699"
+    },
+    {
+      "code": 200,
+      "temp": 8,
+      "windSpeed": 12,
+      "windDirection": 59,
+      "pressure": 999,
+      "date": "2023-07-23T23:05",
+      "fahrenheit": 46.4,
+      "weatherCondition": "Partial Clouds",
+      "weatherIcon": "fa-cloud-sun",
+      "tempIcon": "fa-solid fa-temperature-empty",
+      "beaufortScale": 3,
+      "label": "Gentle Breeze",
+      "windChill": 5.9,
+      "windDirectionCalculation": "East North-East",
+      "_id": "fac1a569-211b-4910-b67e-2a490b64747a",
+      "stationid": "35cf7765-a196-40fb-adac-a0110fb1d699"
+    },
+    {
+      "code": 500,
+      "temp": 5,
+      "windSpeed": 56,
+      "windDirection": 180,
+      "pressure": 998,
+      "date": "2023-07-23T23:05",
+      "fahrenheit": 41,
+      "weatherCondition": "Heavy Showers",
+      "weatherIcon": "fa-cloud-rain",
+      "tempIcon": "fa-solid fa-temperature-empty",
+      "beaufortScale": 7,
+      "label": "Near Gale",
+      "windChill": -1.6,
+      "windDirectionCalculation": "South",
+      "_id": "04afdf11-08dd-45ec-9a2a-505674cd8ddb",
+      "stationid": "35cf7765-a196-40fb-adac-a0110fb1d699"
     }
   ]
 }

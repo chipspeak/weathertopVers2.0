@@ -40,6 +40,12 @@ export const accountsController = {
     console.log(`registering ${user.email}`);
     response.redirect("/");
   },
+  
+    async updateUserInfo(request, response) {
+    const user = await userStore.getUserByEmail(request.body.email);
+    await userStore.updateUser(user);
+    response.redirect("/");
+  },
 
   async authenticate(request, response) {
     const user = await userStore.getUserByEmail(request.body.email);

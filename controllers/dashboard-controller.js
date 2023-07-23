@@ -8,8 +8,10 @@ export const dashboardController = {
     const viewData = {
       title: "Station Dashboard",
       stations: await stationStore.getStationsByUserId(loggedInUser._id),
-      
     };
+    for (const station of viewData.stations) {
+      viewData.stations.sort((a, b) => (a.location > b.location ?  1 : -1 ));
+    }
     console.log("dashboard rendering");
     response.render("dashboard-view", viewData);
   },
@@ -22,7 +24,7 @@ export const dashboardController = {
       latitude: request.body.latitude,
       userid: loggedInUser._id,
     };
-    console.log(`adding station ${newStation.title}`);
+    console.log(`adding station ${newStation.location}`);
     await stationStore.addStation(newStation);
     response.redirect("/dashboard");
   },
