@@ -27,7 +27,7 @@ export const accountsController = {
     response.render("signup-view", viewData);
   },
   
-    profile(request, response) {
+  profile(request, response) {
     const viewData = {
       title: "update your profile",
     };
@@ -41,10 +41,14 @@ export const accountsController = {
     response.redirect("/");
   },
   
-    async updateUserInfo(request, response) {
-    const user = await userStore.getUserByEmail(request.body.email);
-    await userStore.updateUser(user);
-    response.redirect("/");
+    async update(request, response) {
+    const loggedInUser = await accountsController.getLoggedInUser(request);
+    const updatedUser = {
+      firstName: request.body.firstName,
+      lastName: request.body.lastName,
+    };
+    await userStore.updateUser(loggedInUser._id, updatedUser);
+    response.redirect("/dashboard");
   },
 
   async authenticate(request, response) {

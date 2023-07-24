@@ -13,6 +13,7 @@ export const dashboardController = {
       viewData.stations.sort((a, b) => (a.location > b.location ?  1 : -1 ));
     }
     console.log("dashboard rendering");
+    console.log(loggedInUser.firstname);
     response.render("dashboard-view", viewData);
   },
 

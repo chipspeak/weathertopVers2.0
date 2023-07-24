@@ -16,6 +16,15 @@ export const userStore = {
     await db.write();
     return user;
   },
+  
+    async updateUser(userId, updatedUser) {
+    const user = await this.getUserById(userId);
+    user.firstName = updatedUser.firstName;
+    user.lastName = updatedUser.lastName;
+    
+    await db.write();
+      return user;
+  },
 
   async getUserById(id) {
     await db.read();
@@ -25,13 +34,6 @@ export const userStore = {
   async getUserByEmail(email) {
     await db.read();
     return db.data.users.find((user) => user.email === email);
-  },
-  
-  async updateUser(user) {
-    await db.read();
-    user.firstName = 0;
-    user.lastName = 1;
-    
   },
 
   async deleteUserById(id) {
