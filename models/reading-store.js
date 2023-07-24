@@ -20,7 +20,11 @@ export const readingStore = {
   },
 
   async getReadingsByStationId(id) {
+    let displayReadings = false;
     await db.read();
+        if (db.data.readings.length > 0) {
+      displayReadings = true;
+    }
     return db.data.readings.filter((reading) => reading.stationid === id);
   },
 

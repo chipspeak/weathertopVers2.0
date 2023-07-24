@@ -1,5 +1,6 @@
 import { stationStore } from "../models/station-store.js";
 import { accountsController } from "./accounts-controller.js";
+import {stationAnalytics} from "../utils/station-analytics.js";
 
 export const dashboardController = {
   async index(request, response) {
@@ -8,7 +9,11 @@ export const dashboardController = {
       title: "Station Dashboard",
       stations: await stationStore.getStationsByUserId(loggedInUser._id),
     };
+    for (const station of viewData.stations) {
+      viewData.stations.sort((a, b) => (a.location > b.location ?  1 : -1 ));
+    }
     console.log("dashboard rendering");
+    console.log(loggedInUser.firstname);
     response.render("dashboard-view", viewData);
   },
 
@@ -20,7 +25,7 @@ export const dashboardController = {
       latitude: request.body.latitude,
       userid: loggedInUser._id,
     };
-    console.log(`adding station ${newStation.title}`);
+    console.log(`adding station ${newStation.location}`);
     await stationStore.addStation(newStation);
     response.redirect("/dashboard");
   },

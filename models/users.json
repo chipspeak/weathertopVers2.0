@@ -2,11 +2,16 @@
   "file": "./models/users.json",
   "users": [
     {
-      "firstname": "Patrick",
-      "lastname": "O'Connor",
       "email": "pwoconnor@hotmail.co.uk",
       "password": "0",
       "_id": "47a3b657-dce7-47d7-955c-a1e43774ecde"
+    },
+    {
+      "firstName": "Caoimhe",
+      "lastName": "Walsh",
+      "email": "0",
+      "password": "0",
+      "_id": "eeb121aa-13b3-405d-89d5-d6cbe4e90213"
     }
   ]
 }
