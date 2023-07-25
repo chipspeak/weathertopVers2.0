@@ -2,6 +2,8 @@ import { stationStore } from "../models/station-store.js";
 import { readingStore } from "../models/reading-store.js";
 import {conversions } from "../utils/conversions.js";
 import {stationAnalytics} from "../utils/station-analytics.js";
+import axios from "axios";
+
 
 export const stationController = {
   async index(request, response) {
@@ -41,7 +43,8 @@ export const stationController = {
       windSpeed: Number(request.body.windSpeed),
       windDirection: Number(request.body.windDirection),
       pressure: Number(request.body.pressure),
-      date: request.body.date,
+      date: Date(request.body.date),
+      time: conversions.timeConversion(request.body.date),
       fahrenheit: Number(conversions.tempConversion(request.body.temp)),
       weatherCondition: conversions.weatherDisplay(Number(request.body.code)),
       weatherIcon: conversions.weatherVisual(Number(request.body.code)),
@@ -113,6 +116,99 @@ export const stationController = {
     response.redirect("/station/" + station._id);
     
 
+  },
+  
+  //method below to implement the same passage of params but instead using a weather api
+    
+   async addReport(request, response) {
+    let station = await stationStore.getStationById(request.params.id);
+    console.log("rendering new report");
+    let report = {};
+    const lat = station.latitude;
+    const lon = station.longitude;
+    const oneCallRequest = `https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&units=metric&appid=686a99e81a6f4520a8583049a7871179`
+    const result = await axios.get(oneCallRequest);
+    if (result.status == 200) {
+      const autoReading = result.data.current;
+      report.code = conversions.apiCodeConverter(autoReading.weather[0].id)
+      report.temp = autoReading.temp;
+      report.windSpeed = autoReading.wind_speed;
+      report.pressure = autoReading.pressure;
+      report.windDirection = autoReading.wind_deg;
+      report.date = Date(autoReading.dt);
+      report.time = conversions.timeConversion(report.date);
+      report.fahrenheit = Number(conversions.tempConversion(autoReading.temp));
+      report.weatherCondition = conversions.weatherDisplay(Number(report.code));
+      report.weatherIcon = conversions.weatherVisual(Number(report.code));
+      report.tempIcon = conversions.tempVisual(report.temp);
+      report.beaufortScale = Number(conversions.beaufortConversion(report.windSpeed));
+      report.label = conversions.beaufortLabelConversion(conversions.beaufortConversion(report.windSpeed));
+      report.windChill = conversions.windChillCalculation(Number(report.temp), Number(report.windSpeed));
+      report.windDirectionCalculation = conversions.windDirectionCalculation(report.windDirection);
+        
+      await readingStore.addReading(station._id, report);
+    }
+     
+     const latestReading = await stationStore.getLatestReading(request.params.id);
+    
+    station = await stationStore.getStationById(request.params.id);
+    const maxTemp = await stationAnalytics.maxTemp(station);
+    const minTemp = await stationAnalytics.minTemp(station);
+    const tempTrendText = await stationAnalytics.tempTrend(station);
+    const maxWind = await stationAnalytics.maxWind(station);
+    const minWind = await stationAnalytics.minWind(station);
+    const windTrendText = await stationAnalytics.windTrend(station);
+    const maxPressure = await stationAnalytics.maxPressure(station);
+    const minPressure = await stationAnalytics.minPressure(station);
+    const pressureTrendText = await stationAnalytics.pressureTrend(station);
+    const latestCode = await latestReading.code;
+    const latestTemp = await latestReading.temp;
+    const latestWindSpeed = await latestReading.windSpeed;
+    const latestWindDirection = await latestReading.windDirection;
+    const latestPressure = await latestReading.pressure;
+    const latestFahrenheit = await latestReading.fahrenheit;
+    const latestWeatherCondition = await latestReading.weatherCondition;
+    const latestWeatherIcon = await latestReading.weatherIcon;
+    const latestTempIcon = await latestReading.tempIcon;
+    const latestBeaufortScale = await latestReading.beaufortScale;
+    const latestLabel = await latestReading.label;
+    const latestWindChill = await latestReading.windChill;
+    const latestWindDirectionCalculation = await latestReading.windDirectionCalculation;
+    
+    const updatedStation = {
+      location: station.location,
+      longitude: station.longitude,
+      latitude: station.latitude,
+      userid: station.userid,
+      maxTemp: maxTemp,
+      minTemp: minTemp,
+      tempTrendText: tempTrendText,
+      maxWind: maxWind,
+      minWind: minWind,
+      windTrendText: windTrendText,
+      maxPressure: maxPressure,
+      minPressure: minPressure,
+      pressureTrendText: pressureTrendText,
+      latestTemp: latestTemp,
+      latestCode: latestCode,
+      latestWindSpeed: latestWindSpeed,
+      latestWindDirection: latestWindDirection,
+      latestPressure: latestPressure,
+      latestFahrenheit: latestFahrenheit,
+      latestWeatherCondition: latestWeatherCondition,
+      latestWeatherIcon: latestWeatherIcon,
+      latestTempIcon: latestTempIcon,
+      latestBeaufortScale: latestBeaufortScale,
+      latestLabel: latestLabel,
+      latestWindChill: latestWindChill,
+      latestWindDirectionCalculation: latestWindDirectionCalculation,
+      
+    };
+    
+    await stationStore.updateStation(station, updatedStation);
+    response.redirect("/station/" + station._id);
+    
+     
   },
 
   async deleteReading(request, response) {

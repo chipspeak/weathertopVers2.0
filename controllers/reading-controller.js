@@ -1,6 +1,8 @@
 import { stationStore } from "../models/station-store.js";
 import { readingStore } from "../models/reading-store.js";
 import {conversions } from "../utils/conversions.js";
+import {stationAnalytics} from "../utils/station-analytics.js";
+import axios from "axios";
 
 export const readingController = {
   async index(request, response) {
@@ -26,7 +28,7 @@ export const readingController = {
       windSpeed: Number(request.body.windSpeed),
       windDirection: Number(request.body.windDirection),
       pressure: Number(request.body.pressure),
-      date: request.body.date,
+      date: Date(request.body.date),
       fahrenheit: Number(conversions.tempConversion(request.body.temp)),
       weatherCondition: conversions.weatherDisplay(Number(request.body.code)),
       weatherIcon: conversions.weatherVisual(Number(request.body.code)),

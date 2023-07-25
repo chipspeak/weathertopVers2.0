@@ -1,5 +1,6 @@
 import { v4 } from "uuid";
 import { initStore } from "../utils/store-utils.js";
+import { accountsController } from "/app/controllers/accounts-controller.js";
 
 const db = initStore("users");
 
@@ -17,13 +18,26 @@ export const userStore = {
     return user;
   },
   
-    async updateUser(userId, updatedUser) {
+  
+//     async updateUser(userId, updatedUser) {
+//     const user = await this.getUserById(userId);
+//     user.firstName = updatedUser.firstName;
+//     user.lastName = updatedUser.lastName;
+    
+//     await db.write();
+//       return user;
+//   },
+  
+
+  
+  async updateUser(userId, updatedUser)  {
+    // console.log(`${JSON.stringify(userId), ' some text'}`);
     const user = await this.getUserById(userId);
     user.firstName = updatedUser.firstName;
     user.lastName = updatedUser.lastName;
-    
+    user.password = updatedUser.password;
+    // console.log(`${JSON.stringify(updatedUser)}`);
     await db.write();
-      return user;
   },
 
   async getUserById(id) {
