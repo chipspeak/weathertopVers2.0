@@ -29,6 +29,46 @@ export const conversions = {
     }
     return weatherCondition;
   },
+  
+    apiCodeConverter(code) {
+    let updatedCode = 0;
+    switch (code) {
+      case ((code > 199) && (code < 300)):
+        updatedCode = 800;
+        break;
+      case ((code > 299) && (code < 400)):
+        updatedCode = 400;
+        break;
+      case ((code > 499) && (code < 600)):
+        updatedCode = 500;
+        break;
+      case ((code > 599) && (code < 700)):
+        updatedCode = 700;
+        break;
+      case 800:
+        updatedCode = 100;
+        break;
+      case 801:
+        updatedCode = 200;
+        break;
+      case 802:
+        updatedCode = 200;
+        break;
+      case 803:
+        updatedCode = 300;
+        break;
+      case 804:
+        updatedCode = 300;
+        break;
+    }
+    return updatedCode;
+  },
+  
+  timeConversion(date) {
+    const time = new Date(date);
+    return time.toUTCString();
+    // return time.toLocaleString('en-IE');
+  },
 
   /*
   this method takes the same code as above and instead uses it to return
@@ -66,7 +106,8 @@ export const conversions = {
     }
     return weatherIcon;
   },
-
+  
+  
   /*
   this method is similar to the above where a string containing
   a font awesome icon is returned however a series of if statements
@@ -97,7 +138,7 @@ export const conversions = {
    */
   tempConversion(temp) {
     const fahrenheit = (temp * 9) / 5 + 32;
-    return fahrenheit;
+    return fahrenheit.toFixed(2);
   },
 
   /*

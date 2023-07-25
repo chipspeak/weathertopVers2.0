@@ -8,13 +8,13 @@
       </figure>
     </div>
     <div class="column is-half">
-      <form action="/update" method="POST">
+      <form action="/profile/updateprofile/{{user._id}}" method="POST">
         <h3 class="subtitle">Edit Personal Details</h3>
         <div class="field is-horizontal field-body">
           <div class="field">
             <label class="label">First Name</label>
             <p class="control has-icons-left">
-              <input class="input" type="text" placeholder="{{firstName}}" name="firstname">
+              <input class="input" type="text" placeholder="{{user.firstName}}" name="firstName">
               <span class="icon is-small is-left">
                   <i class="fa-solid fa-file-signature"></i>
               </span>
@@ -23,7 +23,7 @@
           <div class="field">
             <label class="label">Last Name</label>
             <p class="control has-icons-left">
-              <input class="input" type="text" placeholder="Last name" name="lastname">
+              <input class="input" type="text" placeholder="{{user.lastName}}" name="lastName">
               <span class="icon is-small is-left">
                   <i class="fa-solid fa-file-signature"></i>
               </span>

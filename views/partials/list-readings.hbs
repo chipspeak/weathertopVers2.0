@@ -16,7 +16,7 @@
     {{#each station.readings}}
     <tr>
       <td>
-        {{date}}
+        {{time}}
       </td>
       <td>
         {{code}}
@@ -50,3 +50,10 @@
   </tbody>
 </table>
   {{> add-reading}}
+      <section class="section">
+    <form action="/station/{{station._id}}/addreport" method="POST">
+      <div class="field is-grouped">
+        <button class="button is-link">Auto-generate Reading</button>
+      </div>
+    </form>
+  </section>
