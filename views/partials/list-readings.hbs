@@ -12,8 +12,39 @@
   <th></th>
 </tr>
   </thead>
+  <div class="ui segment" id="chart"></div>
+  <div>
+    <div class="ui segment" id="chart"></div>
+  </div>
+{{#each station.readings}}
+<div class="mb-5">
+  <script>
+  const data = {
+    labels: [
+      {{#each trendLabels}}
+        "{{this}}",
+      {{/each}}
+    ],
+    datasets: [
+      {
+        name: "Temperature in degrees celsius", type: "line",
+        values: [
+          {{#each tempTrend}}
+            {{this}},
+          {{/each}}
+        ]
+      }
+    ]
+  }
+  const chart = new frappe.Chart("#chart", {
+    title: "Temp Trends",
+    data: data,
+    type: 'line',
+    height: 250,
+  })
+</script> 
+</div>
   <tbody>
-    {{#each station.readings}}
     <tr>
       <td>
         {{time}}
@@ -53,7 +84,10 @@
       <section class="section">
     <form action="/station/{{station._id}}/addreport" method="POST">
       <div class="field is-grouped">
-        <button class="button is-link">Auto-generate Reading</button>
+        <button class="button is-info">Auto-generate Reading</button>
       </div>
     </form>
   </section>
+
+
+

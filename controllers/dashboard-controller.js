@@ -20,29 +20,6 @@ export const dashboardController = {
     console.log(loggedInUser.password);
     response.render("dashboard-view", viewData);
   },
-  
- // async addreport(request, response) {
- //    console.log("rendering new report");
- //    let report = {};
- //    const lat = station.latitude;
- //    const lon = station.longitutde;
- //    const oneCallRequest = `https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&units=metric&appid=686a99e81a6f4520a8583049a7871179`
- //    const result = await axios.get(oneCallRequest);
- //    if (result.status == 200) {
- //      const reading = result.data.current;
- //      report.code = reading.weather[0].id;
- //      report.temperature = reading.temp;
- //      report.windSpeed = reading.wind_speed;
- //      report.pressure = reading.pressure;
- //      report.windDirection = reading.wind_deg;
- //    }
- //    console.log(report);
- //    const viewData = {
- //      title: "Weather Report",
- //      reading: report
- //    };
- //    response.render("dashboard-view", viewData);
- //  },
 
   async addStation(request, response) {
     const loggedInUser = await accountsController.getLoggedInUser(request);

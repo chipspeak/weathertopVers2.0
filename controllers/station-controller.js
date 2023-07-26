@@ -145,6 +145,14 @@ export const stationController = {
       report.label = conversions.beaufortLabelConversion(conversions.beaufortConversion(report.windSpeed));
       report.windChill = conversions.windChillCalculation(Number(report.temp), Number(report.windSpeed));
       report.windDirectionCalculation = conversions.windDirectionCalculation(report.windDirection);
+      report.tempTrend = [];
+      report.trendLabels = [];
+      const trends = result.data.daily;
+      for (let i=0; i<trends.length; i++) {
+        report.tempTrend.push(trends[i].temp.day);
+        const date = new Date(trends[i].dt * 1000);
+        report.trendLabels.push(`${date.getDate()}/${date.getMonth()}/${date.getFullYear()}` );
+      }
         
       await readingStore.addReading(station._id, report);
     }
@@ -202,7 +210,6 @@ export const stationController = {
       latestLabel: latestLabel,
       latestWindChill: latestWindChill,
       latestWindDirectionCalculation: latestWindDirectionCalculation,
-      
     };
     
     await stationStore.updateStation(station, updatedStation);
