@@ -38,7 +38,7 @@ export const accountsController = {
     const user = request.body;
     await userStore.addUser(user);
     console.log(`registering ${user.email}`);
-    response.redirect("/");
+    response.redirect("/login");
   },
   
     async profile(request, response) {

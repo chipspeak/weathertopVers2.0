@@ -109,13 +109,9 @@ export const stationController = {
       latestLabel: latestLabel,
       latestWindChill: latestWindChill,
       latestWindDirectionCalculation: latestWindDirectionCalculation,
-      
     };
-    
     await stationStore.updateStation(station, updatedStation);
     response.redirect("/station/" + station._id);
-    
-
   },
   
   //method below to implement the same passage of params but instead using a weather api
@@ -152,13 +148,10 @@ export const stationController = {
         report.tempTrend.push(trends[i].temp.day);
         const date = new Date(trends[i].dt * 1000);
         report.trendLabels.push(`${date.getDate()}/${date.getMonth()}/${date.getFullYear()}` );
-      }
-        
+      }   
       await readingStore.addReading(station._id, report);
     }
-     
      const latestReading = await stationStore.getLatestReading(request.params.id);
-    
     station = await stationStore.getStationById(request.params.id);
     const maxTemp = await stationAnalytics.maxTemp(station);
     const minTemp = await stationAnalytics.minTemp(station);
@@ -210,12 +203,9 @@ export const stationController = {
       latestLabel: latestLabel,
       latestWindChill: latestWindChill,
       latestWindDirectionCalculation: latestWindDirectionCalculation,
-    };
-    
+    }; 
     await stationStore.updateStation(station, updatedStation);
-    response.redirect("/station/" + station._id);
-    
-     
+    response.redirect("/station/" + station._id);  
   },
 
   async deleteReading(request, response) {
@@ -224,8 +214,5 @@ export const stationController = {
     console.log(`Deleting Reading ${readingId} from Station ${stationId}`);
     await readingStore.deleteReading(request.params.readingId);
     response.redirect("/station/" + stationId);
-  },
-  
-
-  
+  }, 
 };

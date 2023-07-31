@@ -17,26 +17,12 @@ export const userStore = {
     await db.write();
     return user;
   },
-  
-  
-//     async updateUser(userId, updatedUser) {
-//     const user = await this.getUserById(userId);
-//     user.firstName = updatedUser.firstName;
-//     user.lastName = updatedUser.lastName;
     
-//     await db.write();
-//       return user;
-//   },
-  
-
-  
   async updateUser(userId, updatedUser)  {
-    // console.log(`${JSON.stringify(userId), ' some text'}`);
     const user = await this.getUserById(userId);
     user.firstName = updatedUser.firstName;
     user.lastName = updatedUser.lastName;
     user.password = updatedUser.password;
-    // console.log(`${JSON.stringify(updatedUser)}`);
     await db.write();
   },
 
