@@ -33,11 +33,8 @@ export const stationStore = {
     console.log(list.readings.length);
     if (list.readings.length > 0) {
       return list.readings[list.readings.length-1];
-      // console.log(displayReadings);
     }
     else {
-      // displayReadings = false;
-      // console.log(displayReadings);
       return null;}
   },
   
