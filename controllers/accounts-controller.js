@@ -26,7 +26,7 @@ export const accountsController = {
     };
     response.render("signup-view", viewData);
   },
-  
+
   profile(request, response) {
     const viewData = {
       title: "update your profile",
@@ -40,38 +40,26 @@ export const accountsController = {
     console.log(`registering ${user.email}`);
     response.redirect("/login");
   },
-  
-    async profile(request, response) {
+
+  async profile(request, response) {
     const loggedInUser = await accountsController.getLoggedInUser(request);
-      const viewData = {
-        title: "Edit User Profile",
-        user: loggedInUser,
-      };
-      response.render("profile", viewData);
-    },
-  
-    async profileUpdate(request, response){
-  const loggedInUser = await accountsController.getLoggedInUser(request);
+    const viewData = {
+      title: "Edit User Profile",
+      user: loggedInUser,
+    };
+    response.render("profile", viewData);
+  },
+
+  async profileUpdate(request, response) {
+    const loggedInUser = await accountsController.getLoggedInUser(request);
     const userId = await userStore.getUserById(loggedInUser._id);
     const newUser = {
       firstName: request.body.firstName,
       lastName: request.body.lastName,
-      password: request.body.password
     };
-    // console.log(`${JSON.stringify(userId._id)}`);
     await userStore.updateUser(userId._id, newUser);
     response.redirect("/profile");
   },
-  
-  //   async update(request, response) {
-  //   const loggedInUser = await accountsController.getLoggedInUser(request);
-  //   const updatedUser = {
-  //     firstName: request.body.firstName,
-  //     lastName: request.body.lastName,
-  //   };
-  //   await userStore.updateUser(loggedInUser._id, updatedUser);
-  //   response.redirect("/dashboard");
-  // },
 
   async authenticate(request, response) {
     const user = await userStore.getUserByEmail(request.body.email);

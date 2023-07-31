@@ -17,8 +17,8 @@ export const userStore = {
     await db.write();
     return user;
   },
-    
-  async updateUser(userId, updatedUser)  {
+
+  async updateUser(userId, updatedUser) {
     const user = await this.getUserById(userId);
     user.firstName = updatedUser.firstName;
     user.lastName = updatedUser.lastName;

@@ -2,7 +2,6 @@ import { v4 } from "uuid";
 import { initStore } from "../utils/store-utils.js";
 import { conversions } from "../utils/conversions.js";
 
-
 const db = initStore("readings");
 
 export const readingStore = {
@@ -21,11 +20,7 @@ export const readingStore = {
   },
 
   async getReadingsByStationId(id) {
-    let displayReadings = false;
     await db.read();
-        if (db.data.readings.length > 0) {
-      displayReadings = true;
-    }
     return db.data.readings.filter((reading) => reading.stationid === id);
   },
 
@@ -38,6 +33,14 @@ export const readingStore = {
     await db.read();
     const index = db.data.readings.findIndex((reading) => reading._id === id);
     db.data.readings.splice(index, 1);
+    await db.write();
+  },
+  
+  async deleteStationReadings(id) { //method uses station id to iterate through a loop, filter out the readings of this specific station and then rewrite the db to exclude these readings.
+    await db.read();
+    for (let i = 0; i < id.length; i++) {
+      db.data.readings = db.data.readings.filter(reading => reading.stationid !== id[i]);
+    }
     await db.write();
   },
 

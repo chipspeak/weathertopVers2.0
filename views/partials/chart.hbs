@@ -1,0 +1,81 @@
+<div class="ui segment mb-5" id="chart1">
+<script>
+  const data1 = {
+    labels: [
+      {{#each labels}}
+        "{{this}}",
+      {{/each}}
+    ],
+    datasets: [
+      {
+        name: "Temperature in degrees celsius", type: "line",
+        values: [
+          {{#each tempTrend}}
+            {{this}},
+          {{/each}}
+        ]
+      }
+    ]
+  }
+  const chart1 = new frappe.Chart("#chart1", {
+    title: "Temperature Trends",
+    data: data1,
+    type: 'line',
+    height: 200,
+  })
+</script> 
+</div>
+<div class="ui segment mb-5" id="chart2">
+<script>
+  const data2 = {
+    labels: [
+      {{#each labels}}
+        "{{this}}",
+      {{/each}}
+    ],
+    datasets: [
+      {
+        name: "Wind speed", type: "line",
+        values: [
+          {{#each windTrend}}
+            {{this}},
+          {{/each}}
+        ]
+      }
+    ]
+  }
+  const chart2 = new frappe.Chart("#chart2", {
+    title: "Wind Trends",
+    data: data2,
+    type: 'line',
+    height: 200,
+  })
+</script> 
+</div>
+<div class="ui segment mb-5" id="chart3">
+<script>
+  const data3 = {
+    labels: [
+      {{#each labels}}
+        "{{this}}",
+      {{/each}}
+    ],
+    datasets: [
+      {
+        name: "Pressure", type: "line",
+        values: [
+          {{#each pressureTrend}}
+            {{this}},
+          {{/each}}
+        ]
+      }
+    ]
+  }
+  const chart3 = new frappe.Chart("#chart3", {
+    title: "Pressure Trends",
+    data: data3,
+    type: 'line',
+    height: 200,
+  })
+</script> 
+</div>
