@@ -2,30 +2,11 @@
   "file": "./models/users.json",
   "users": [
     {
+      "firstName": "Pat",
+      "lastName": "O'Connor",
       "email": "pwoconnor@hotmail.co.uk",
       "password": "0",
-      "_id": "47a3b657-dce7-47d7-955c-a1e43774ecde"
-    },
-    {
-      "firstName": "Caoimhe",
-      "lastName": "Walsh",
-      "email": "0",
-      "password": "0",
-      "_id": "eeb121aa-13b3-405d-89d5-d6cbe4e90213"
-    },
-    {
-      "email": "jacklame@email.com",
-      "password": "0",
-      "_id": "64759b1c-a216-410b-a489-310afbb695d1",
-      "firstName": "Jack",
-      "lastName": "Lame"
-    },
-    {
-      "firstName": "test",
-      "lastName": "test",
-      "email": "test",
-      "password": "test",
-      "_id": "01ceb52e-1124-4afe-ae0d-15f4c80438d6"
+      "_id": "4146a45e-8a94-4e63-bcaf-566c55341999"
     }
   ]
 }

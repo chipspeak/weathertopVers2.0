@@ -1,6 +1,6 @@
 import { stationStore } from "../models/station-store.js";
 import { accountsController } from "./accounts-controller.js";
-import {stationAnalytics} from "../utils/station-analytics.js";
+import { stationAnalytics } from "../utils/station-analytics.js";
 import axios from "axios";
 
 export const dashboardController = {
@@ -10,14 +10,18 @@ export const dashboardController = {
       title: "Station Dashboard",
       stations: await stationStore.getStationsByUserId(loggedInUser._id),
     };
+    //method to sort the stations in alphabetical order by their locations
     for (const station of viewData.stations) {
-      viewData.stations.sort((a, b) => (a.location > b.location ?  1 : -1 ));
+      viewData.stations.sort((a, b) => (a.location > b.location ? 1 : -1));
     }
     console.log("dashboard rendering");
     console.log(loggedInUser.firstName);
     console.log(loggedInUser.lastName);
     console.log(loggedInUser.email);
     console.log(loggedInUser.password);
+    //     let viewDataString = JSON.stringify(viewData); // Debug Remove Later
+    // let viewDateObject = JSON.parse(viewDataString); // Debug Remove Later
+    // console.dir(viewDateObject, { depth: null, colors: true }); // Debug Remove Later
     response.render("dashboard-view", viewData);
   },
 
@@ -39,5 +43,12 @@ export const dashboardController = {
     console.log(`Deleting Station ${stationId}`);
     await stationStore.deleteStationById(stationId);
     response.redirect("/dashboard");
+  },
+  
+    addInitialReading(request, response) {
+    const viewData = {
+      title: "Add initial reading",
+    };
+    response.render("addInitialReading", viewData);
   },
 };

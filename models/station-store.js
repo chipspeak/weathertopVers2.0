@@ -24,20 +24,19 @@ export const stationStore = {
     list.readings = await readingStore.getReadingsByStationId(list._id);
     return list;
   },
-  
+
   async getLatestReading(id) {
-    // let displayReadings = true;
     await db.read();
     const list = db.data.stations.find((station) => station._id === id);
     list.readings = await readingStore.getReadingsByStationId(list._id);
     console.log(list.readings.length);
     if (list.readings.length > 0) {
-      return list.readings[list.readings.length-1];
+      return list.readings[list.readings.length - 1];
+    } else {
+      return null;
     }
-    else {
-      return null;}
   },
-  
+
   async updateStation(station, updatedStation) {
     station.title = updatedStation.title;
     station.longitude = updatedStation.longitude;
@@ -52,6 +51,7 @@ export const stationStore = {
     station.maxPressure = updatedStation.maxPressure;
     station.minPressure = updatedStation.minPressure;
     station.pressureTrendText = updatedStation.pressureTrendText;
+    station.displayReadings = updatedStation.displayReadings;
     station.latestTemp = updatedStation.latestTemp;
     station.latestWindSpeed = updatedStation.latestWindSpeed;
     station.latestWindDirection = updatedStation.latestWindDirection;
@@ -63,8 +63,8 @@ export const stationStore = {
     station.latestBeaufortScale = updatedStation.latestBeaufortScale;
     station.latestLabel = updatedStation.latestLabel;
     station.latestWindChill = updatedStation.latestWindChill;
-    station.windDirectionCalculation = updatedStation.latestWindDirectionCalculation;
-      
+    station.windDirectionCalculation =
+    updatedStation.latestWindDirectionCalculation;
     await db.write();
   },
 
@@ -77,6 +77,7 @@ export const stationStore = {
     await db.read();
     const index = db.data.stations.findIndex((station) => station._id === id);
     db.data.stations.splice(index, 1);
+    await readingStore.deleteStationReadings(id);
     await db.write();
   },
 

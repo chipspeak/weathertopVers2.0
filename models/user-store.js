@@ -1,6 +1,7 @@
 import { v4 } from "uuid";
 import { initStore } from "../utils/store-utils.js";
 import { accountsController } from "/app/controllers/accounts-controller.js";
+import { stationStore } from "../models/station-store.js";
 
 const db = initStore("users");
 
@@ -17,12 +18,12 @@ export const userStore = {
     await db.write();
     return user;
   },
-    
-  async updateUser(userId, updatedUser)  {
+
+  async updateUser(userId, updatedUser) {
     const user = await this.getUserById(userId);
     user.firstName = updatedUser.firstName;
     user.lastName = updatedUser.lastName;
-    user.password = updatedUser.password;
+    // user.password = updatedUser.password;
     await db.write();
   },
 
@@ -40,6 +41,7 @@ export const userStore = {
     await db.read();
     const index = db.data.users.findIndex((user) => user._id === id);
     db.data.users.splice(index, 1);
+    await stationStore.deleteStationById(id);
     await db.write();
   },
 

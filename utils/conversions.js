@@ -29,76 +29,40 @@ export const conversions = {
     }
     return weatherCondition;
   },
-  
-  
+
   //use if statement to tidy this up
-  //   apiCodeConverter(code) {
-  //   let updatedCode = 0;
-  //   switch (code) {
-  //     case ((code > 199) && (code < 300)):
-  //       updatedCode = 800;
-  //       break;
-  //     case ((code > 299) && (code < 400)):
-  //       updatedCode = 400;
-  //       break;
-  //     case ((code > 499) && (code < 600)):
-  //       updatedCode = 500;
-  //       break;
-  //     case ((code > 599) && (code < 700)):
-  //       updatedCode = 700;
-  //       break;
-  //     case 800:
-  //       updatedCode = 100;
-  //       break;
-  //     case 801:
-  //       updatedCode = 200;
-  //       break;
-  //     case 802:
-  //       updatedCode = 200;
-  //       break;
-  //     case 803:
-  //       updatedCode = 300;
-  //       break;
-  //     case 804:
-  //       updatedCode = 300;
-  //       break;
-  //   }
-  //   return updatedCode;
-  // },
-  
-    //use if statement to tidy this up
-    apiCodeConverter(code) {
+  apiCodeConverter(code) {
     let updatedCode = 0;
-      if ((code > 199) && (code < 300)){
-        updatedCode = 800;
-      }
-      if ((code > 299) && (code < 400)){
-        updatedCode = 400;
+    if (code > 199 && code < 300) {
+      updatedCode = 800;
     }
-      if ((code > 499) && (code < 600)){
-        updatedCode = 500;
+    else if (code > 299 && code < 400) {
+      updatedCode = 400;
     }
-      if ((code > 599) && (code < 700)){
-        updatedCode = 700;
+    else if (code > 499 && code < 600) {
+      updatedCode = 500;
     }
-      if (code = 800) {
-        updatedCode = 100;
-}
-      if (code = 801){
-        updatedCode = 200;
-      }
-      if (code = 802) {
-        updatedCode = 200;
-      }
-      if (code = 803) {
-        updatedCode = 300;
-      }
-      if (code = 804) {
-        updatedCode = 300;
-      }
+    else if (code > 599 && code < 700) {
+      updatedCode = 700;
+    }
+    else if ((code == 800)) {
+      updatedCode = 100;
+    }
+    else if ((code == 801)) {
+      updatedCode = 200;
+    }
+    else if ((code == 802)) {
+      updatedCode = 200;
+    }
+    else if ((code == 803)) {
+      updatedCode = 300;
+    }
+    else if ((code == 804)) {
+      updatedCode = 300;
+    }
     return updatedCode;
   },
-  
+
   timeConversion(date) {
     const time = new Date(date);
     return time.toUTCString();
@@ -113,7 +77,8 @@ export const conversions = {
   weatherVisual(code) {
     let weatherIcon = "fa-sun";
     switch (code) {
-      default: weatherIcon = "fa-sun";
+      default:
+        weatherIcon = "fa-sun";
       case 100:
         weatherIcon = "fa-sun";
         break;
@@ -141,8 +106,7 @@ export const conversions = {
     }
     return weatherIcon;
   },
-  
-  
+
   /*
   this method is similar to the above where a string containing
   a font awesome icon is returned however a series of if statements
@@ -282,8 +246,8 @@ export const conversions = {
         0.6215 * temp -
         11.37 * Math.pow(windSpeed, 0.16) +
         0.3965 * temp * Math.pow(windSpeed, 0.16);
-       windChill = Math.round(chill * 10.0) / 10.0;
-    } 
+      windChill = Math.round(chill * 10.0) / 10.0;
+    }
     return windChill;
   },
 
@@ -341,6 +305,4 @@ export const conversions = {
       return "North North-West";
     } else return " ";
   },
-  
-
 };
