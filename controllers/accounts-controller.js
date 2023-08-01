@@ -53,12 +53,20 @@ export const accountsController = {
   async profileUpdate(request, response) {
     const loggedInUser = await accountsController.getLoggedInUser(request);
     const userId = await userStore.getUserById(loggedInUser._id);
-    const newUser = {
+    const updatedUser = {
       firstName: request.body.firstName,
       lastName: request.body.lastName,
+      // password: request.body.password
     };
-    await userStore.updateUser(userId._id, newUser);
+    await userStore.updateUser(userId._id, updatedUser);
     response.redirect("/profile");
+  },
+  
+  async profileDelete(request, response) {
+    const loggedInUser = await accountsController.getLoggedInUser(request);
+    const userId = await userStore.getUserById(loggedInUser._id);
+    await userStore.deleteUserById(userId);
+    response.redirect("/signup");
   },
 
   async authenticate(request, response) {

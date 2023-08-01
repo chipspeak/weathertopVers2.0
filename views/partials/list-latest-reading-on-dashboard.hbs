@@ -1,4 +1,4 @@
-
+{{#if displayReadings}}
 <table class="table is-bordered">
   <div class="columns">
     <div class="column is-2 is-offset-1">
@@ -9,7 +9,7 @@
           </p>
         </header>
         <div class="card-image">
-          <i class="fa-regular has-text-white fa-compass fa-beat fa-7x ml-3 pl-5 pb-4"
+          <i class="fa-regular has-text-white has-text-centered fa-compass fa-beat fa-7x ml-3 pl-5 pb-4"
              style="--fa-animation-duration: 6s;"></i>
         </div>
         <p class="card-text has-text-white has-text-centered pt-5">
@@ -94,7 +94,7 @@
         <footer class="card-footer has-text-white">
           <p class="card-footer-item mb-0">Min: {{minWind}} km/h</p>
           <p class="card-footer-item mb-0">Max: {{maxWind}} km/h</p>
-          <i class="card-footer-item mt-5 mr-5 {{windTrendText}}" style="--fa-animation-duration: 5s;"></i>
+          <i class="card-footer-item mt-5 {{windTrendText}}" style="--fa-animation-duration: 5s;"></i>
         </footer>
       </div>
     </div>
@@ -123,5 +123,7 @@
     </div>
   </div>
 </table>
+{{/if}}
+
 
 

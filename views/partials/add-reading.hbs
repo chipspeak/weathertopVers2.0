@@ -1,3 +1,5 @@
+{{#if displayReadings}}
+<div class="box">
 <form action="/station/{{station._id}}/addreading" method="POST">
   <div class="columns mt-2">
     <div class="field column is-2 is-offset-1">
@@ -38,10 +40,12 @@
       <input type="datetime-local" name="date" required>
     </div>
   </div>
-  <div class="field column is-2 is-offset-9 mt-4">
+  <div class="field column is-2 is-offset-10 mt-4">
     <div class="control">
       <button class="button is-info is-medium is-outlined">Add Reading<i class="fa-solid fa-square-plus pl-3"></i>
       </button>
     </div>
   </div>
 </form>
+</div>
+{{/if}}

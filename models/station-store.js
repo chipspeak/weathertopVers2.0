@@ -26,7 +26,6 @@ export const stationStore = {
   },
 
   async getLatestReading(id) {
-    // let displayReadings = true;
     await db.read();
     const list = db.data.stations.find((station) => station._id === id);
     list.readings = await readingStore.getReadingsByStationId(list._id);
@@ -52,6 +51,7 @@ export const stationStore = {
     station.maxPressure = updatedStation.maxPressure;
     station.minPressure = updatedStation.minPressure;
     station.pressureTrendText = updatedStation.pressureTrendText;
+    station.displayReadings = updatedStation.displayReadings;
     station.latestTemp = updatedStation.latestTemp;
     station.latestWindSpeed = updatedStation.latestWindSpeed;
     station.latestWindDirection = updatedStation.latestWindDirection;

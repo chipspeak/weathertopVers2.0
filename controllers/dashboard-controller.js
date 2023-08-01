@@ -44,4 +44,11 @@ export const dashboardController = {
     await stationStore.deleteStationById(stationId);
     response.redirect("/dashboard");
   },
+  
+    addInitialReading(request, response) {
+    const viewData = {
+      title: "Add initial reading",
+    };
+    response.render("addInitialReading", viewData);
+  },
 };

@@ -1,4 +1,4 @@
-<div class="ui segment mb-5" id="chart1">
+<div class="ui segment" id="chart1">
 <script>
   const data1 = {
     labels: [
@@ -35,7 +35,7 @@
     ],
     datasets: [
       {
-        name: "Wind speed", type: "line",
+        name: "Wind speed in km/hr", type: "line",
         values: [
           {{#each windTrend}}
             {{this}},
@@ -62,7 +62,7 @@
     ],
     datasets: [
       {
-        name: "Pressure", type: "line",
+        name: "Pressure in hPa", type: "line",
         values: [
           {{#each pressureTrend}}
             {{this}},
