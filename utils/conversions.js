@@ -66,7 +66,6 @@ export const conversions = {
   timeConversion(date) {
     const time = new Date(date);
     return time.toUTCString();
-    // return time.toLocaleString('en-IE');
   },
 
   /*

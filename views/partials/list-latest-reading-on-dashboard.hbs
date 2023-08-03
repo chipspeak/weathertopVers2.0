@@ -8,8 +8,8 @@
             Station
           </p>
         </header>
-        <div class="card-image">
-          <i class="fa-regular has-text-white has-text-centered fa-compass fa-beat fa-7x ml-3 pl-5 pb-4"
+        <div class="card-image has-text-centered">
+          <i class="fa-regular has-text-white has-text-centered fa-compass fa-beat fa-7x"
              style="--fa-animation-duration: 6s;"></i>
         </div>
         <p class="card-text has-text-white has-text-centered pt-5">
@@ -53,7 +53,7 @@
         </header>
         <div class="card-image">
           <figure class="image is-medium has-text-centered">
-            <i class="{{latestTempIcon}} fa-regular has-text-white fa-beat fa-7x pl-1"
+            <i class="{{latestTempIcon}} fa-regular has-text-white fa-beat fa-7x"
                style="--fa-animation-duration: 8s;"></i>
           </figure>
         </div>
@@ -66,7 +66,9 @@
         <footer class="card-footer has-text-white">
           <p class="card-footer-item mb-0">Min: {{minTemp}}°</p>
           <p class="card-footer-item mb-0">Max: {{maxTemp}}°</p>
-          <i class="card-footer-item mt-2 {{tempTrendText}}" style="--fa-animation-duration: 5s;"></i>
+          <p>
+            <i class="card-footer-item mt-2 has-text-centered {{tempTrendText}}" style="--fa-animation-duration: 5s;"></i>
+          </p>
         </footer>
       </div>
     </div>
@@ -94,7 +96,11 @@
         <footer class="card-footer has-text-white">
           <p class="card-footer-item mb-0">Min: {{minWind}} km/h</p>
           <p class="card-footer-item mb-0">Max: {{maxWind}} km/h</p>
-          <i class="card-footer-item mt-5 {{windTrendText}}" style="--fa-animation-duration: 5s;"></i>
+          <p>
+            <br>
+            <i class="card-footer-item has-text-centered {{windTrendText}}" style="--fa-animation-duration: 5s;"></i>
+
+          </p>
         </footer>
       </div>
     </div>
@@ -117,7 +123,10 @@
         <footer class="card-footer has-text-white">
           <p class="card-footer-item mb-0">Min: {{minPressure}} hPa</p>
           <p class="card-footer-item mb-0">Max: {{maxPressure}} hPa</p>
-          <i class="card-footer-item mt-5 {{pressureTrendText}}" style="--fa-animation-duration: 5s;"></i>
+          <p>
+            <br>
+            <i class="card-footer-item  has-text-centered {{pressureTrendText}}" style="--fa-animation-duration: 5s;"></i>
+          </p>
         </footer>
       </div>
     </div>

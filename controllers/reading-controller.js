@@ -2,10 +2,16 @@ import { stationStore } from "../models/station-store.js";
 import { readingStore } from "../models/reading-store.js";
 import { conversions } from "../utils/conversions.js";
 import { stationAnalytics } from "../utils/station-analytics.js";
+import { accountsController } from "./accounts-controller.js";
 import axios from "axios";
 
 export const readingController = {
   async index(request, response) {
+    let loggedInUser = await accountsController.getLoggedInUser(request);
+    if (loggedInUser === undefined) {
+      response.redirect("/login");
+      return;
+    };
     const stationId = request.params.stationid;
     const readingId = request.params.readingid;
     // const station = await stationStore.getStationById(request.params.id);
