@@ -35,14 +35,6 @@ export const readingStore = {
     db.data.readings.splice(index, 1);
     await db.write();
   },
-  
-  async deleteStationReadings(id) { //method uses station id to iterate through a loop, filter out the readings of this specific station and then rewrite the db to exclude these readings.
-    await db.read();
-    for (let i = 0; i < id.length; i++) {
-      db.data.readings = db.data.readings.filter(reading => reading.stationid !== id[i]);
-    }
-    await db.write();
-  },
 
   async deleteAllReadings() {
     db.data.readings = [];
@@ -50,6 +42,7 @@ export const readingStore = {
   },
 
   async updateReading(readingId, updatedReading) {
+    //method which takes the updatedReading from the reading-controller and adds it to the database.
     const reading = await this.getReadingById(readingId);
     reading.code = updatedReading.code;
     reading.temp = updatedReading.temp;

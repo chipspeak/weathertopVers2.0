@@ -1,6 +1,12 @@
 import { stationStore } from "../models/station-store.js";
 
 export const stationAnalytics = {
+  //methods that carry out calculations based on multiple station readings
+
+  /*below methods take in station objects, check if the array contains readings
+  and then uses a for each loop to compare each readings values to the first reading 
+  in the array. Method iterates through a loop checking each reading for greater
+  or less values and returns the desired reading.variable*/
   minTemp(station) {
     let minTemp = null;
     if (station.readings.length != 0) {
@@ -106,6 +112,11 @@ export const stationAnalytics = {
     return tempTrendText;
   },
 
+  /*the below series of methods are used to illustrate trends based on the
+  last 3 readings in the station. New reading objects are initialised at
+  the 3 most recent points in the array list and then these readings' selected
+  values are compared via an if statement. The outcome then returns a font
+  awesome icon based on trending up, down, or remaining steady*/
   pressureTrend(station) {
     let pressureTrendText = "fas fa-2x fa-arrows-h";
     if (station.readings.length != 0 && station.readings.length > 2) {
@@ -159,16 +170,23 @@ export const stationAnalytics = {
     }
     return windTrendText;
   },
-  
+
   stationReadings(station) {
+    /*method that we will call and constantly update to reflect
+    content of readings array. If there are no readings
+    it returns as false. This will be used in the listlatestreadings views
+    to render different version of the page depending on the content of the array*/
     let displayReadings = false;
-    if(station.readings.length > 0) {
+    if (station.readings.length > 0) {
       displayReadings = true;
     }
     return displayReadings;
   },
-  
-  async updateStationParameters(id) {
+
+  async updateStationContent(id) {
+    /*method which takes in station id and updates the station object to reflect
+    the latest reading. This updated station object is then passed to the station
+    store where it is written to the db.*/
     const latestReading = await stationStore.getLatestReading(id);
     const station = await stationStore.getStationById(id);
     const maxTemp = await stationAnalytics.maxTemp(station);
@@ -182,71 +200,70 @@ export const stationAnalytics = {
     const pressureTrendText = await stationAnalytics.pressureTrend(station);
     const displayReadings = await stationAnalytics.stationReadings(station);
     if (station.readings.length != 0) {
-    const latestCode = await latestReading.code;
-    const latestTemp = await latestReading.temp;
-    const latestWindSpeed = await latestReading.windSpeed;
-    const latestWindDirection = await latestReading.windDirection;
-    const latestPressure = await latestReading.pressure;
-    const latestFahrenheit = await latestReading.fahrenheit;
-    const latestWeatherCondition = await latestReading.weatherCondition;
-    const latestWeatherIcon = await latestReading.weatherIcon;
-    const latestTempIcon = await latestReading.tempIcon;
-    const latestBeaufortScale = await latestReading.beaufortScale;
-    const latestLabel = await latestReading.label;
-    const latestWindChill = await latestReading.windChill;
-    const latestWindDirectionCalculation =
-    await latestReading.windDirectionCalculation;
+      //if statement to account for potential null errors.Checks if station contains readings.
+      const latestCode = await latestReading.code;
+      const latestTemp = await latestReading.temp;
+      const latestWindSpeed = await latestReading.windSpeed;
+      const latestWindDirection = await latestReading.windDirection;
+      const latestPressure = await latestReading.pressure;
+      const latestFahrenheit = await latestReading.fahrenheit;
+      const latestWeatherCondition = await latestReading.weatherCondition;
+      const latestWeatherIcon = await latestReading.weatherIcon;
+      const latestTempIcon = await latestReading.tempIcon;
+      const latestBeaufortScale = await latestReading.beaufortScale;
+      const latestLabel = await latestReading.label;
+      const latestWindChill = await latestReading.windChill;
+      const latestWindDirectionCalculation =
+        await latestReading.windDirectionCalculation;
 
-    const updatedStation = {
-      location: station.location,
-      longitude: station.longitude,
-      latitude: station.latitude,
-      userid: station.userid,
-      maxTemp: maxTemp,
-      minTemp: minTemp,
-      tempTrendText: tempTrendText,
-      maxWind: maxWind,
-      minWind: minWind,
-      windTrendText: windTrendText,
-      maxPressure: maxPressure,
-      minPressure: minPressure,
-      pressureTrendText: pressureTrendText,
-      displayReadings: displayReadings,
-      latestTemp: latestTemp,
-      latestCode: latestCode,
-      latestWindSpeed: latestWindSpeed,
-      latestWindDirection: latestWindDirection,
-      latestPressure: latestPressure,
-      latestFahrenheit: latestFahrenheit,
-      latestWeatherCondition: latestWeatherCondition,
-      latestWeatherIcon: latestWeatherIcon,
-      latestTempIcon: latestTempIcon,
-      latestBeaufortScale: latestBeaufortScale,
-      latestLabel: latestLabel,
-      latestWindChill: latestWindChill,
-      latestWindDirectionCalculation: latestWindDirectionCalculation,
-    };
-      await stationStore.updateStation(station, updatedStation);
-      } else {
-        const updatedStation = {
-      location: station.location,
-      longitude: station.longitude,
-      latitude: station.latitude,
-      userid: station.userid,
-      maxTemp: maxTemp,
-      minTemp: minTemp,
-      tempTrendText: tempTrendText,
-      maxWind: maxWind,
-      minWind: minWind,
-      windTrendText: windTrendText,
-      maxPressure: maxPressure,
-      minPressure: minPressure,
-      pressureTrendText: pressureTrendText,
-      displayReadings: displayReadings,
+      const updatedStation = {
+        location: station.location,
+        longitude: station.longitude,
+        latitude: station.latitude,
+        userid: station.userid,
+        maxTemp: maxTemp,
+        minTemp: minTemp,
+        tempTrendText: tempTrendText,
+        maxWind: maxWind,
+        minWind: minWind,
+        windTrendText: windTrendText,
+        maxPressure: maxPressure,
+        minPressure: minPressure,
+        pressureTrendText: pressureTrendText,
+        displayReadings: displayReadings,
+        latestTemp: latestTemp,
+        latestCode: latestCode,
+        latestWindSpeed: latestWindSpeed,
+        latestWindDirection: latestWindDirection,
+        latestPressure: latestPressure,
+        latestFahrenheit: latestFahrenheit,
+        latestWeatherCondition: latestWeatherCondition,
+        latestWeatherIcon: latestWeatherIcon,
+        latestTempIcon: latestTempIcon,
+        latestBeaufortScale: latestBeaufortScale,
+        latestLabel: latestLabel,
+        latestWindChill: latestWindChill,
+        latestWindDirectionCalculation: latestWindDirectionCalculation,
       };
       await stationStore.updateStation(station, updatedStation);
-      }
-  }
-}
-  
-
+    } else {
+      const updatedStation = {
+        location: station.location,
+        longitude: station.longitude,
+        latitude: station.latitude,
+        userid: station.userid,
+        maxTemp: maxTemp,
+        minTemp: minTemp,
+        tempTrendText: tempTrendText,
+        maxWind: maxWind,
+        minWind: minWind,
+        windTrendText: windTrendText,
+        maxPressure: maxPressure,
+        minPressure: minPressure,
+        pressureTrendText: pressureTrendText,
+        displayReadings: displayReadings,
+      };
+      await stationStore.updateStation(station, updatedStation);
+    }
+  },
+};

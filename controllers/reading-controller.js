@@ -6,17 +6,18 @@ import { accountsController } from "./accounts-controller.js";
 import axios from "axios";
 
 export const readingController = {
+  //once again the method to prevent url-related errors
   async index(request, response) {
     let loggedInUser = await accountsController.getLoggedInUser(request);
     if (loggedInUser === undefined) {
       response.redirect("/login");
       return;
-    };
+    }
+    //initializing the station and reading ids
     const stationId = request.params.stationid;
     const readingId = request.params.readingid;
-    // const station = await stationStore.getStationById(request.params.id);
-    // const reading = await readingStore.getReadingById(request.params.id);
     console.log(`Editing Reading ${readingId} from Station ${stationId}`);
+    //passing the station and reading to view data
     const viewData = {
       title: "Edit Reading",
       station: await stationStore.getStationById(stationId),
@@ -26,6 +27,7 @@ export const readingController = {
   },
 
   async update(request, response) {
+    //method to update a reading. Udating all variables via the fields entered on the update page.
     const stationId = request.params.stationid;
     const readingId = request.params.readingid;
     const updatedReading = {
@@ -54,6 +56,7 @@ export const readingController = {
       ),
     };
     console.log(`Updating Reading ${readingId} from Station ${stationId}`);
+    //passes this reading to the updateReading method from readingStore
     await readingStore.updateReading(readingId, updatedReading);
     response.redirect("/station/" + stationId);
   },
