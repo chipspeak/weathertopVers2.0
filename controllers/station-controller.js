@@ -2,10 +2,18 @@ import { stationStore } from "../models/station-store.js";
 import { readingStore } from "../models/reading-store.js";
 import { conversions } from "../utils/conversions.js";
 import { stationAnalytics } from "../utils/station-analytics.js";
+import { accountsController } from "./accounts-controller.js";
 import axios from "axios";
 
 export const stationController = {
+  
   async index(request, response) {
+    //method to render login page if incorrect pathing results in null errors
+    let loggedInUser = await accountsController.getLoggedInUser(request);
+    if (loggedInUser === undefined) {
+      response.redirect("/login");
+      return;
+    };
     const station = await stationStore.getStationById(request.params.id);
     const latestReading = await stationStore.getLatestReading(
       request.params.id
@@ -46,8 +54,7 @@ export const stationController = {
       windSpeed: Number(request.body.windSpeed),
       windDirection: Number(request.body.windDirection),
       pressure: Number(request.body.pressure),
-      date: Date(request.body.date),
-      time: conversions.timeConversion(request.body.date),
+      time: conversions.timeConversion(new Date()),
       fahrenheit: Number(conversions.tempConversion(request.body.temp)),
       weatherCondition: conversions.weatherDisplay(Number(request.body.code)),
       weatherIcon: conversions.weatherVisual(Number(request.body.code)),
@@ -117,9 +124,9 @@ export const stationController = {
         report.tempTrend.push(trends[i].temp.day);
         report.windTrend.push(trends[i].wind_speed);
         report.pressureTrend.push(trends[i].pressure);
-        const date = new Date(trends[i].dt * 1000);
+        const date = new Date(trends[i].dt*1000).toLocaleDateString("en-uk");
         report.labels.push(
-          `${date.getDate()}/${date.getMonth()}/${date.getFullYear()}`
+          `${date}`
         );
       }
       await readingStore.addReading(station._id, report);

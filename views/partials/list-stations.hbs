@@ -4,11 +4,17 @@
     {{location}}
   </div>
   {{>list-latest-reading-on-dashboard}}
-  <a href="/station/{{_id}}" class="button is-info">
-    <i class="fa-solid fa-folder-open"></i>
-  </a>
-  <a href="/dashboard/deletestation/{{_id}}" class="button is-danger">
-    <i class="fa-solid fa-trash"></i>
-  </a>
+  <div class="columns">
+    <div class="column is-offset-one-fifth">
+      <a href="/station/{{_id}}" class="button is-info">
+        <i class="fa-solid fa-folder-open"></i>
+      </a> 
+    </div>
+    <div class="column is-offset-one-fifth">
+      <a href="/dashboard/deletestation/{{_id}}" class="button is-danger">
+        <i class="fa-solid fa-trash"></i>
+      </a>
+    </div>
+  </div>
 </div>
 {{/each}}

@@ -6,6 +6,10 @@ import axios from "axios";
 export const dashboardController = {
   async index(request, response) {
     const loggedInUser = await accountsController.getLoggedInUser(request);
+    if (loggedInUser === undefined) {
+      response.redirect("/login");
+      return;
+    };
     const viewData = {
       title: "Station Dashboard",
       stations: await stationStore.getStationsByUserId(loggedInUser._id),

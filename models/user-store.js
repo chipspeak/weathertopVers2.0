@@ -23,7 +23,7 @@ export const userStore = {
     const user = await this.getUserById(userId);
     user.firstName = updatedUser.firstName;
     user.lastName = updatedUser.lastName;
-    // user.password = updatedUser.password;
+    user.password = updatedUser.password;
     await db.write();
   },
 
