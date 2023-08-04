@@ -1,5 +1,4 @@
 {{> menu active="profile"}}
-
 <section class="content box">
   <div class="columns">
     <div class="column is-half">
@@ -16,7 +15,7 @@
             <p class="control has-icons-left">
               <input class="input" type="text" placeholder="{{user.firstName}}" name="firstName">
               <span class="icon is-small is-left">
-                  <i class="fa-solid fa-file-signature"></i>
+                <i class="fa-solid fa-file-signature"></i>
               </span>
             </p>
           </div>
@@ -25,7 +24,7 @@
             <p class="control has-icons-left">
               <input class="input" type="text" placeholder="{{user.lastName}}" name="lastName">
               <span class="icon is-small is-left">
-                  <i class="fa-solid fa-file-signature"></i>
+                <i class="fa-solid fa-file-signature"></i>
               </span>
             </p>
           </div>
@@ -35,15 +34,13 @@
           <p class="control has-icons-left">
             <input class="input" type="password" name="password">
             <span class="icon is-small is-left">
-                <i class="fa-solid fa-unlock-keyhole"></i>
+              <i class="fa-solid fa-unlock-keyhole"></i>
             </span>
           </p>
         </div>
         <br>
-        <button class="button is-link is-info is-outlined">Update profile<i
-            class="fa-solid fa-user-check pl-2"></i></button>
-        <a href="/profile/profiledelete/{{user._id}}" class="button is-danger is-outlined ml-2"> Delete profile<i
-            class="fa-solid fa-user-xmark pl-2"></i></a>
+        <button class="button is-link is-info is-outlined">Update profile<i class="fa-solid fa-user-check pl-2"></i></button>
+        <a href="/profile/profiledelete/{{user._id}}" class="button is-danger is-outlined ml-2" onclick="return confirm('Are you sure you want to delete this profile?');">Delete profile<i class="fa-solid fa-user-xmark pl-2"></i></a>
       </form>
     </div>
   </div>

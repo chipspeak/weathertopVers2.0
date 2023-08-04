@@ -24,7 +24,7 @@ router.get("/profile/profiledelete/:_id", accountsController.profileDelete);
 router.get("/dashboard", dashboardController.index);
 router.post("/dashboard/addstation", dashboardController.addStation);
 router.get("/dashboard/deletestation/:id", dashboardController.deleteStation);
-router.get("/addInitialReading", dashboardController.addInitialReading);
+// router.get("/addInitialReading", dashboardController.addInitialReading);
 
 router.get("/station/:id", stationController.index);
 router.post("/station/:id/addreading", stationController.addReading);

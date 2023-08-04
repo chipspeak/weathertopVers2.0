@@ -1,4 +1,7 @@
 export const conversions = {
+  //conversions that will be used on the weather variables in each reading
+
+  //method to take in weather code and display a string representation of conditions
   weatherDisplay(code) {
     let weatherCondition = "null";
     switch (code) {
@@ -30,50 +33,42 @@ export const conversions = {
     return weatherCondition;
   },
 
-  //use if statement to tidy this up
   apiCodeConverter(code) {
+    //method to convert weather api id's to the weather code format used in previous weathertop vers
     let updatedCode = 0;
     if (code > 199 && code < 300) {
       updatedCode = 800;
-    }
-    else if (code > 299 && code < 400) {
+    } else if (code > 299 && code < 400) {
       updatedCode = 400;
-    }
-    else if (code > 499 && code < 600) {
+    } else if (code > 499 && code < 600) {
       updatedCode = 500;
-    }
-    else if (code > 599 && code < 700) {
+    } else if (code > 599 && code < 700) {
       updatedCode = 700;
-    }
-    else if ((code == 800)) {
+    } else if (code == 800) {
       updatedCode = 100;
-    }
-    else if ((code == 801)) {
+    } else if (code == 801) {
       updatedCode = 200;
-    }
-    else if ((code == 802)) {
+    } else if (code == 802) {
       updatedCode = 200;
-    }
-    else if ((code == 803)) {
+    } else if (code == 803) {
       updatedCode = 300;
-    }
-    else if ((code == 804)) {
+    } else if (code == 804) {
       updatedCode = 300;
     }
     return updatedCode;
   },
 
   timeConversion(date) {
+    //method to convert time inputs to UTC
     const time = new Date(date);
     return time.toUTCString();
   },
 
-  /*
-  this method takes the same code as above and instead uses it to return
+  weatherVisual(code) {
+    /*this method takes the same code as above and instead uses it to return
   a string which will double as a font awesome icon to be called
   in the listlatestreadings view
    */
-  weatherVisual(code) {
     let weatherIcon = "fa-sun";
     switch (code) {
       default:
@@ -106,13 +101,12 @@ export const conversions = {
     return weatherIcon;
   },
 
-  /*
-  this method is similar to the above where a string containing
+  tempVisual(temp) {
+    /*this method is similar to the above where a string containing
   a font awesome icon is returned however a series of if statements
   are used to detect temp ranges and return appropriate
   thermometer levels based on temp
    */
-  tempVisual(temp) {
     let tempIcon = "fa-solid fa-temperature-empty";
     if (temp <= 10) {
       tempIcon = "fa-solid fa-temperature-empty";
@@ -129,22 +123,18 @@ export const conversions = {
     return tempIcon;
   },
 
-  /*
-  method to convert the temp variable from the passed in
-  Celsius to Fahrenheit. this method is called in the listreadings view
-  to display the alternate temperature
-   */
   tempConversion(temp) {
+    /*method to convert the temp variable from the passed in
+  Celsius to Fahrenheit. this method is called in the listreadings view
+  to display the alternate temperature*/
     const fahrenheit = (temp * 9) / 5 + 32;
     return fahrenheit.toFixed(2);
   },
 
-  /*
-  method to convert the windSpeed variable to a beaufort scale
-  reading. the windSpeed is passed in and ranges are checked
-  via if statements before a value is returned
-   */
   beaufortConversion(windSpeed) {
+    /*method to convert the windSpeed variable to a beaufort scale
+  reading. the windSpeed is passed in and ranges are checked
+  via if statements before a value is returned*/
     let beaufortScale = 0;
     if (windSpeed == 1) {
       beaufortScale = 0;
@@ -185,12 +175,10 @@ export const conversions = {
     return beaufortScale;
   },
 
-  /*
-  method which takes in the beaufortScale variable from the above method
-  the method then uses a switch statement in order to return the string
-  displaying the beaufort reading
-   */
   beaufortLabelConversion(beaufortScale) {
+    /*method which takes in the beaufortScale variable from the above method
+  the method then uses a switch statement in order to return the string
+  displaying the beaufort reading*/
     let label = null;
     switch (beaufortScale) {
       case 0:
@@ -233,11 +221,9 @@ export const conversions = {
     return label;
   },
 
-  /*
-  this method takes in both temp and windSpeed variables then uses
-  the below formula to calculate the windchill before returning this double
-   */
   windChillCalculation(temp, windSpeed) {
+    /*this method takes in both temp and windSpeed variables then uses
+  the below formula to calculate the windchill before returning it*/
     let windChill = temp;
     if (temp < 10.0 && windSpeed > 4.8) {
       let chill =
@@ -250,11 +236,9 @@ export const conversions = {
     return windChill;
   },
 
-  /*
-  method to calculate wind direction based on if statements to
-  dictate ranges and return a string based on the result
-   */
   windDirectionCalculation(windDirection) {
+    /*method to calculate wind direction based on if statements to
+  dictate ranges and return a string based on the result*/
     if (windDirection > 348.75 && windDirection < 11.25) {
       return "North";
     }

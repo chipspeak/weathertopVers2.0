@@ -20,6 +20,7 @@ export const userStore = {
   },
 
   async updateUser(userId, updatedUser) {
+    //passes in the updated user and initializes the updated variables before writing to db.
     const user = await this.getUserById(userId);
     user.firstName = updatedUser.firstName;
     user.lastName = updatedUser.lastName;

@@ -38,6 +38,7 @@ export const stationStore = {
   },
 
   async updateStation(station, updatedStation) {
+    //method to take in the updated station from stationAnalytics, initialize the updated variables and write it to the db.
     station.title = updatedStation.title;
     station.longitude = updatedStation.longitude;
     station.latitude = updatedStation.latitude;
@@ -64,7 +65,7 @@ export const stationStore = {
     station.latestLabel = updatedStation.latestLabel;
     station.latestWindChill = updatedStation.latestWindChill;
     station.windDirectionCalculation =
-    updatedStation.latestWindDirectionCalculation;
+      updatedStation.latestWindDirectionCalculation;
     await db.write();
   },
 
@@ -77,7 +78,6 @@ export const stationStore = {
     await db.read();
     const index = db.data.stations.findIndex((station) => station._id === id);
     db.data.stations.splice(index, 1);
-    await readingStore.deleteStationReadings(id);
     await db.write();
   },
 
