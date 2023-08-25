@@ -42,7 +42,6 @@ export const userStore = {
     await db.read();
     const index = db.data.users.findIndex((user) => user._id === id);
     db.data.users.splice(index, 1);
-    await stationStore.deleteStationById(id);
     await db.write();
   },
 

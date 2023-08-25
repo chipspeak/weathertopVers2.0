@@ -36,7 +36,7 @@ export const readingController = {
       windSpeed: Number(request.body.windSpeed),
       windDirection: Number(request.body.windDirection),
       pressure: Number(request.body.pressure),
-      date: Date(request.body.date),
+      time: conversions.timeConversion(new Date()),
       fahrenheit: Number(conversions.tempConversion(request.body.temp)),
       weatherCondition: conversions.weatherDisplay(Number(request.body.code)),
       weatherIcon: conversions.weatherVisual(Number(request.body.code)),

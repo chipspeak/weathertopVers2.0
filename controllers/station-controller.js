@@ -90,10 +90,11 @@ export const stationController = {
   },
 
   async addReport(request, response) {
-    //method below to implement the same eading creation but using openweatherapi rather than manual user input
+    //method below to implement the same reading creation but using openweatherapi rather than manual user input
     let station = await stationStore.getStationById(request.params.id);
     console.log("rendering new report");
     let report = {};
+    //initializing coord variables based on station location. These are then passed into the api request below
     const lat = station.latitude;
     const lon = station.longitude;
     //api call
@@ -137,7 +138,7 @@ export const stationController = {
         report.tempTrend.push(trends[i].temp.day);
         report.windTrend.push(trends[i].wind_speed);
         report.pressureTrend.push(trends[i].pressure);
-        /*initializes a new date object, taking in our looped through trends
+        /*initializes a new date object, taking in our looped-through trends
         data, using the dt variable, multiplying by 1000 to convert from utx before
         using toLocaleString to render it the appropriate date. This is then pushed to
         labels for use in charts*/
