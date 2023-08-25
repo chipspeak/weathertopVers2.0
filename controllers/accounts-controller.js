@@ -46,22 +46,6 @@ export const accountsController = {
     response.redirect("/login");
   },
 
-  //   async register(request, response) {
-  //     const allUsers = await userStore.getAllUsers();
-
-  //     for (let i = 0; i < allUsers.length; i++) {
-  //       if (request.body.email == allUsers[i].email) {
-  //         console.log("email already registered, please login");
-  //         break;
-  //       } if (request.body.email != allUsers[i].email) {
-  //         const user = request.body;
-  //         await userStore.addUser(user);
-  //         console.log(`registering ${user.email}`);
-  //       }
-  //     }
-  //     response.redirect("/login");
-  //   },
-
   async profile(request, response) {
     //renders the profile edit page by retrieving the logged in user and displaying the profile view
     const loggedInUser = await accountsController.getLoggedInUser(request);

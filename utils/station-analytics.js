@@ -85,6 +85,11 @@ export const stationAnalytics = {
     } else return 0;
   },
 
+    /*the below series of methods are used to illustrate trends based on the
+  last 3 readings in the station. New reading objects are initialised at
+  the 3 most recent points in the array list and then these readings' selected
+  values are compared via an if statement. The outcome then returns a font
+  awesome icon based on trending up, down, or remaining steady*/
   tempTrend(station) {
     let tempTrendText = "fas fa-2x fa-arrows-h";
     if (station.readings.length != 0 && station.readings.length > 2) {
@@ -112,11 +117,6 @@ export const stationAnalytics = {
     return tempTrendText;
   },
 
-  /*the below series of methods are used to illustrate trends based on the
-  last 3 readings in the station. New reading objects are initialised at
-  the 3 most recent points in the array list and then these readings' selected
-  values are compared via an if statement. The outcome then returns a font
-  awesome icon based on trending up, down, or remaining steady*/
   pressureTrend(station) {
     let pressureTrendText = "fas fa-2x fa-arrows-h";
     if (station.readings.length != 0 && station.readings.length > 2) {
