@@ -313,6 +313,83 @@
       "windDirectionCalculation": "West",
       "_id": "8e2e8d5d-ca3f-4b41-9af7-8c98ad3f0e9b",
       "stationid": "2cffd92c-f6df-4a9f-90b2-e8b84c3e8399"
+    },
+    {
+      "code": 200,
+      "temp": 18.31,
+      "windSpeed": 10.57,
+      "pressure": 1018,
+      "windDirection": 344,
+      "date": "Sun Aug 27 2023 16:31:01 GMT+0000 (Coordinated Universal Time)",
+      "time": "Sun, 27 Aug 2023 16:31:01 GMT",
+      "fahrenheit": 64.96,
+      "weatherCondition": "Partial Clouds",
+      "weatherIcon": "fa-cloud-sun",
+      "tempIcon": "fa-solid fa-temperature-half",
+      "beaufortScale": 2,
+      "label": "Light Breeze",
+      "windChill": 18.31,
+      "windDirectionCalculation": "North North-West",
+      "tempTrend": [
+        19.26,
+        20.98,
+        21.16,
+        22.82,
+        26.61,
+        28.61,
+        29.85,
+        27.59
+      ],
+      "windTrend": [
+        13.19,
+        10.05,
+        9.06,
+        6.2,
+        3.35,
+        4.57,
+        6.39,
+        4.71
+      ],
+      "pressureTrend": [
+        1015,
+        1018,
+        1014,
+        1013,
+        1015,
+        1016,
+        1015,
+        1014
+      ],
+      "labels": [
+        "27/08/2023",
+        "28/08/2023",
+        "29/08/2023",
+        "30/08/2023",
+        "31/08/2023",
+        "01/09/2023",
+        "02/09/2023",
+        "03/09/2023"
+      ],
+      "_id": "dd77e3b6-7c6d-4014-ab01-c43709a66e98",
+      "stationid": "8249a2c1-e5a0-47cc-b1b7-e4178779be0b"
+    },
+    {
+      "code": 100,
+      "temp": -5,
+      "windSpeed": 12,
+      "windDirection": 59,
+      "pressure": 1000,
+      "time": "Sun, 27 Aug 2023 17:09:51 GMT",
+      "fahrenheit": 23,
+      "weatherCondition": "Clear",
+      "weatherIcon": "fa-sun",
+      "tempIcon": "fa-solid fa-temperature-empty",
+      "beaufortScale": 3,
+      "label": "Gentle Breeze",
+      "windChill": -9.9,
+      "windDirectionCalculation": "East North-East",
+      "_id": "e1f98bea-e0e9-4ce3-9def-b590c6105bc7",
+      "stationid": "8249a2c1-e5a0-47cc-b1b7-e4178779be0b"
     }
   ]
 }
